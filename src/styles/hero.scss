@@ -1,0 +1,43 @@
+.hero {
+  background-color: var(--tertiary-color);
+  position: relative;
+
+  &-background-desktop {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+  }
+
+  &-text {
+    padding: 5vw 0;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+
+    & > img {
+      width: 30%;
+      max-width: 20%;
+    }
+
+    h1 {
+      font-size: 5vw;
+      color: #fff;
+      margin: 2vw 0 1vw;
+      max-width: 35vw;
+
+      img {
+        display: block;
+        width: 2vw;
+      }
+    }
+  }
+}

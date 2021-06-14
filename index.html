@@ -1,17 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <title>Green Thumb App</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    <title>Green Thumb App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
           rel="stylesheet"
-  />
-  <link rel="stylesheet" href="./src/styles/index.scss" />
+    />
+    <link rel="stylesheet" href="./src/styles/index.scss" />
 </head>
 
 <body>
-<img src="./src/images/icons/logo-white.svg" alt="Greenthumb" />
+<header class="hero">
+    <div class="hero-text container">
+        <img src="./src/images/icons/logo-white.svg" alt="Greenthumb Logo" />
+        <h1>
+            Find your next green friend
+            <img src="./src/images/icons/arrow-down.svg" alt="Arrow Down Icon" />
+        </h1>
+    </div>
+    <div class="hero-background-desktop">
+        <div class="leaves-left">
+            <img src="./src/images/hero/desktop/left-leaves.png"
+                 alt="Plant leaves"
+            />
+        </div>
+        <div class="plant-person">
+            <img src="./src/images/hero/desktop/plantperson.png"
+                 alt="Person with a plant"
+            />
+        </div>
+        <div class="leaves-right">
+            <img src="./src/images/hero/desktop/right-leaves.png"
+                 alt="Plant leaves"
+            />
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="filter-select-group"></section>
+    <section class="filter-results-list">
+        <h2>No results yet</h2>
+    </section>
+
+    <!-- HTML Template Area -->
+    <template id="filter-template">
+        <article class="filter">
+            <figure>
+                <img alt="" src="" />
+                <figcaption class="label"></figcaption>
+            </figure>
+            <select>
+                <option value="" disabled selected>Select...</option>
+            </select>
+        </article>
+    </template>
+    <template id="filter-results-template">
+        <li></li>
+    </template>
+</main>
+<!--  //  -->
+<script type="module" src="./index.js"></script>
 </body>
 </html>
