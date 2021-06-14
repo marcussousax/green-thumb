@@ -2,7 +2,7 @@ const FILTERS = [
     {
         key: 'sun',
         iconPath: require('./src/images/illustrations/sun.png'),
-        label: 'Set the amount of sunlight your plant will get.',
+        label: `Set the amount of <strong>sunlight</strong> your plant will get.`,
         options: ['no', 'low', 'high'],
         meta: {
             inverted: false
@@ -11,7 +11,7 @@ const FILTERS = [
     {
         key: 'water',
         iconPath: require('./src/images/illustrations/wateringcan.png'),
-        label: 'How often do you want to water your plant?',
+        label: `How often do you want to <strong>water</strong> your plant?`,
         options: ['rarely', 'daily', 'regularly'],
         meta: {
             inverted: true
@@ -20,7 +20,7 @@ const FILTERS = [
     {
         key: 'pets',
         iconPath: require('./src/images/illustrations/dog.png'),
-        label: 'Do you have pets? Do they chew plants? ',
+        label: `Do you have pets? Do they <strong>chew</strong> plants?`,
         options: ['yes', 'no'],
         meta: {
             inverted: false
@@ -30,14 +30,32 @@ const FILTERS = [
 
 
 function app() {
+    renderEmptyMessage('No results yet...', 'Use the filters above to find the plant that best fits your environment :)')
     createFilterWithTemplate(FILTERS)
 }
 
-function createFilterWithTemplate(filters) {
-    const filterPlaceholder = document.querySelector('.filter-select-group')
+
+// Display Generic messages on Filter Results Section
+function renderEmptyMessage(title, subtitle) {
+    const filterSection = document.querySelector('.filter-results-section')
+    const emptyTemplate = document.getElementById('filter-results-empty-template')
+    const emptyTemplateContent = document.importNode(emptyTemplate.content, true)
+    emptyTemplateContent.querySelector('.section-title').textContent = title
+    emptyTemplateContent.querySelector('.section-subtitle').textContent = subtitle
 
     const container = document.createElement('section')
-    container.classList.add('filter-container')
+    container.classList.add('filter-results-section')
+    container.appendChild(emptyTemplateContent)
+
+    filterSection.replaceWith(container)
+}
+
+function createFilterWithTemplate(filters) {
+    const filterSection = document.querySelector('.filter-section')
+
+    const container = document.createElement('div')
+    container.classList.add('container', 'filter-selects-container')
+
     const template = document.getElementById('filter-template')
 
     const filterState = {
@@ -56,7 +74,7 @@ function createFilterWithTemplate(filters) {
         const img = filterBlock.querySelector('img')
         img.src = filter.iconPath
         inverted && img.classList.add('is-inverted')
-        filterBlock.querySelector('.label').textContent = `${index + 1}. ${filter.label}`
+        filterBlock.querySelector('.label').innerHTML = `<strong>${index + 1}.</strong> ${filter.label}`
 
         for (const options of filterOptions) {
             let option = document.createElement('option')
@@ -77,23 +95,27 @@ function createFilterWithTemplate(filters) {
         container.appendChild(filterBlock)
     })
 
-    filterPlaceholder.replaceWith(container)
+    filterSection.appendChild(container)
 }
 
 function createFilterResultsWithTemplate(data) {
 
-    const filterResultsPlaceholder = document.querySelector('.filter-results-list')
+    const filterResultsPlaceholder = document.querySelector('.filter-results-section')
+
+    const container = document.createElement('section')
+    container.classList.add('filter-results-section')
 
     const ul = document.createElement('ul')
     ul.classList.add('filter-results-list')
+    container.appendChild(ul)
     const template = document.getElementById('filter-results-template')
+
     data.forEach(plant => {
         const plantCard = document.importNode(template.content, true)
         plantCard.querySelector('li').textContent = plant.name
-
         ul.appendChild(plantCard)
     })
-    filterResultsPlaceholder.replaceWith(ul)
+    filterResultsPlaceholder.replaceWith(container)
 }
 
 function tryFetchPlants(filterState) {
@@ -103,14 +125,11 @@ function tryFetchPlants(filterState) {
 
     const {sun, water, pets} = filterState
 
-    let placeholder = document.querySelector('.filter-results-list')
-    placeholder.innerHTML = '<h1>Loading...</h1>'
-
     return fetch(`https://front-br-challenges.web.app/api/v2/green-thumb/?sun=${sun}&water=${water}&pets=${pets}`)
         .then(response => response.json())
         .then(data => {
             if (data.status === 404) {
-                placeholder.innerHTML = `<h1>${data.error}</h1>`
+                renderEmptyMessage('No plants found', 'No plant was found with selected criteria.')
             } else {
                 createFilterResultsWithTemplate(data)
             }

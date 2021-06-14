@@ -2,38 +2,11 @@
 @import "scaffolding";
 @import "helpers";
 @import "hero";
+@import "filter";
 
 .application-content {
   width: 900px;
   margin: 0 auto;
-  background: aqua;
-}
-
-.filter-container {
-  display: flex;
-  justify-content: space-between;
-  padding-left: 0;
-  list-style-position: inside;
-
-  .filter {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: calc(100% / 3 - 40px);
-    img {
-      display: block;
-      max-width: 103px;
-      max-height: 75px;
-
-      &.is-inverted {
-        transform: scaleX(-1);
-      }
-    }
-
-    select {
-      width: 100%
-    }
-  }
 }
 
 .container {
@@ -42,7 +15,7 @@
   margin: 0 auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: $breakpoint) {
   .container {
     max-width: 65%;
     margin: 0 auto;

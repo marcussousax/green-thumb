@@ -38,15 +38,13 @@
     </div>
 </header>
 
-<main class="container">
-    <section class="filter-select-group"></section>
-    <section class="filter-results-list">
-        <h2>No results yet</h2>
-    </section>
+<main>
+    <section class="filter-section"></section>
+    <section class="filter-results-section"></section>
 
     <!-- HTML Template Area -->
     <template id="filter-template">
-        <article class="filter">
+        <article class="filter-block">
             <figure>
                 <img alt="" src="" />
                 <figcaption class="label"></figcaption>
@@ -58,6 +56,12 @@
     </template>
     <template id="filter-results-template">
         <li></li>
+    </template>
+    <template id="filter-results-empty-template">
+        <article class="container filter-empty">
+            <p class="section-title"></p>
+            <p class="section-subtitle"></p>
+        </article>
     </template>
 </main>
 <!--  //  -->
