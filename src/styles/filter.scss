@@ -5,6 +5,12 @@ $COMPENSATION: 250px;
   padding: 50px 0;
 }
 
+.filter-results-section {
+  .loading-results {
+    padding: 5vw;
+  }
+}
+
 .filter-selects-container {
   display: flex;
   justify-content: space-between;
@@ -86,7 +92,6 @@ $COMPENSATION: 250px;
       font-size: 55px;
     }
   }
-
 }
 
 
@@ -94,10 +99,6 @@ $COMPENSATION: 250px;
   color: #A9A9A9;
   display: flex;
   padding: 0;
-
-  .loading-results {
-    padding: 80px;
-  }
 
   @media (max-width: $breakpoint) {
     overflow: auto;

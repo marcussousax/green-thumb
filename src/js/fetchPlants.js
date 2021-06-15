@@ -8,6 +8,18 @@ export default function (filterState) {
 
     const {sun, water, pets} = filterState
 
+    const placeholder = document.querySelector('.filter-results-section')
+    placeholder.innerHTML = `
+        <div class="loading-results">
+            <div class="sk-folding-cube">
+              <div class="sk-cube1 sk-cube"></div>
+              <div class="sk-cube2 sk-cube"></div>
+              <div class="sk-cube4 sk-cube"></div>
+              <div class="sk-cube3 sk-cube"></div>
+            </div>
+        </div>
+    `
+
     return fetch(`https://front-br-challenges.web.app/api/v2/green-thumb/?sun=${sun}&water=${water}&pets=${pets}`)
         .then(response => response.json())
         .then(data => {
