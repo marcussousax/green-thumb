@@ -2,9 +2,19 @@
   background-color: var(--tertiary-color);
   position: relative;
 
+  &-background-mobile {
+    @media (min-width: $breakpoint) {
+      display: none;
+    }
+  }
+
   &-background-desktop {
     display: flex;
     align-items: center;
+
+    @media (max-width: $breakpoint) {
+      display: none;
+    }
 
     img {
       width: 100%;
@@ -25,7 +35,9 @@
 
     & > img {
       width: 30%;
-      max-width: 20%;
+      @media (max-width: $breakpoint) {
+        width: 80%;
+      }
     }
 
     h1 {
@@ -34,9 +46,19 @@
       margin: 2vw 0 1vw;
       max-width: 35vw;
 
+      @media (max-width: $breakpoint) {
+        font-size: 12vw;
+        max-width: initial;
+        margin-top: 8vw;
+      }
+
       img {
         display: block;
         width: 2vw;
+        @media (max-width: $breakpoint) {
+          margin-top: $default-gap;
+          width: 8vw;
+        }
       }
     }
   }
