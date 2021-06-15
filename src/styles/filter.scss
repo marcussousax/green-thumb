@@ -43,11 +43,19 @@ $COMPENSATION: 250px;
 .filter-empty {
   color: #A9A9A9;
   background: transparent url('/src/images/illustrations/no-results.png') no-repeat calc(100% - #{$COMPENSATION}) center;
-  padding: 80px 0;
+  padding: 120px 0;
+  @media (max-width: $breakpoint) {
+    padding: $default-gap 0;
+    background-position: bottom center;
+    padding-bottom: $COMPENSATION;
+  }
 
   .section-title {
     font-size: 45px;
     font-weight: 700;
+    @media (max-width: $breakpoint) {
+      margin-bottom: $default-gap;
+    }
   }
 
   p {
@@ -58,6 +66,27 @@ $COMPENSATION: 250px;
       max-width: $COMPENSATION;
     }
   }
+}
+
+.filter-results-header {
+  padding: $default-gap 0;
+
+  &-icon {
+    margin-bottom: $default-gap;
+    max-width: 145px;
+    @media (min-width: $breakpoint) {
+      margin: $default-gap 0;
+      max-width: 160px;
+    }
+  }
+
+  &-title {
+    font-size: 40px;
+    @media (min-width: $breakpoint) {
+      font-size: 55px;
+    }
+  }
+
 }
 
 
@@ -92,15 +121,6 @@ $COMPENSATION: 250px;
     }
   }
   .filter-results-section {
-    padding: 50px 0;
-  }
-  .filter-empty {
-    background-position: bottom center;
-    padding-bottom: $COMPENSATION;
-    padding-top: 0;
-
-    .section-title {
-      margin-bottom: $default-gap;
-    }
+    padding: $default-gap 0;
   }
 }

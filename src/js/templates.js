@@ -49,6 +49,9 @@ export function createFilterWithTemplate(filters) {
 }
 
 const ICONS = {
+    HEADER: {
+        pick: require('../images/illustrations/pick.png')
+    },
     SUN: {
         no: require('../images/icons/no-sun.svg'),
         low: require('../images/icons/low-sun.svg'),
@@ -75,9 +78,17 @@ export function createFilterResultsWithTemplate(data) {
     const div = document.createElement('div')
     div.classList.add('container')
 
+    const resultsHeader = document.createElement('header')
+    resultsHeader.classList.add('filter-results-header')
+    resultsHeader.innerHTML = `
+        <img class="filter-results-header-icon" src=${ICONS.HEADER.pick} alt="Illustration of the Sun">
+        <h3 class="filter-results-header-title">Our picks for you</h3>
+    `
+
     const ul = document.createElement('ul')
     ul.classList.add('filter-results-list')
 
+    div.appendChild(resultsHeader)
     div.appendChild(ul)
     container.appendChild(div)
 
