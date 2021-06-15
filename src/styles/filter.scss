@@ -23,9 +23,11 @@ $COMPENSATION: 250px;
     align-items: flex-start;
     width: calc(100% / 3 - 40px);
     color: #848484;
+
     figure {
       flex: 1;
     }
+
     img {
       display: block;
       max-width: 103px;
@@ -119,6 +121,21 @@ $COMPENSATION: 250px;
   }
 }
 
+.btn-scroll-to-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $default-gap / 2;
+  align-self: stretch;
+  margin: 5vw auto;
+  border-radius: 25px;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  font-size: 16px;
+  img {
+    margin: 0 $default-gap / 2;
+  }
+}
 
 @media (max-width: $breakpoint) {
   .filter-selects-container {
@@ -134,3 +151,5 @@ $COMPENSATION: 250px;
     padding: $default-gap 0;
   }
 }
+
+

@@ -52,6 +52,9 @@ const ICONS = {
     HEADER: {
         pick: require('../images/illustrations/pick.png')
     },
+    ARROW: {
+        up: require('../images/icons/arrow-up.svg')
+    },
     SUN: {
         no: require('../images/icons/no-sun.svg'),
         low: require('../images/icons/low-sun.svg'),
@@ -109,4 +112,23 @@ export function createFilterResultsWithTemplate(data) {
         ul.appendChild(plantCard)
     })
     filterResultsPlaceholder.replaceWith(container)
+    renderScrollToTop()
+}
+
+
+function renderScrollToTop() {
+
+    const filterResultsPlaceholder = document.querySelector('.filter-results-section')
+
+    const button = document.createElement('button')
+    button.classList.add('container', 'btn-scroll-to-top')
+    button.innerHTML = `
+        <img src=${ICONS.ARROW.up} alt="Scroll to top" /> 
+        back to the top
+    `
+    button.addEventListener('click', () => {
+        window.scroll({top: 0})
+    })
+
+    filterResultsPlaceholder.appendChild(button)
 }
