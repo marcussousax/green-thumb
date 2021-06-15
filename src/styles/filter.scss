@@ -23,7 +23,9 @@ $COMPENSATION: 250px;
     align-items: flex-start;
     width: calc(100% / 3 - 40px);
     color: #848484;
-
+    figure {
+      flex: 1;
+    }
     img {
       display: block;
       max-width: 103px;
@@ -40,8 +42,15 @@ $COMPENSATION: 250px;
     }
 
     select {
+      appearance: none;
+      color: var(--gray-2-color);
       width: 100%;
       margin-top: 10px;
+      border-radius: $default-gap;
+      background: var(--white-color);
+      border-color: var(--gray-1-color);
+      padding: 10px;
+      cursor: pointer;
     }
   }
 }

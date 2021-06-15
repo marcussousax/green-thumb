@@ -26,14 +26,14 @@ export function createFilterWithTemplate(filters) {
         inverted && img.classList.add('is-inverted')
         filterBlock.querySelector('.label').innerHTML = `<strong>${index + 1}.</strong> ${filter.label}`
 
-        for (const options of filterOptions) {
+        for (const filterOption of filterOptions) {
             let option = document.createElement('option')
             if (filter.key === 'pets') {
-                option.value = (options === 'yes').toString()
+                option.value = (filterOption.key === 'yes').toString()
             } else {
-                option.value = options
+                option.value = filterOption.key
             }
-            option.text = options
+            option.text = filterOption.value
             select.appendChild(option)
         }
 
