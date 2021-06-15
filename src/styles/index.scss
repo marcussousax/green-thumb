@@ -3,32 +3,4 @@
 @import "helpers";
 @import "hero";
 @import "filter";
-
-.application-content {
-  width: 900px;
-  margin: 0 auto;
-}
-
-.container {
-  width: 100%;
-  max-width: 80%;
-  margin: 0 auto;
-}
-
-@media (max-width: $breakpoint) {
-  .container {
-    max-width: 65%;
-    margin: 0 auto;
-  }
-
-  .application-header {
-    margin: 0 auto;
-    flex-direction: column;
-
-    .header-section {
-
-    }
-  }
-}
-
-
+@import "card";

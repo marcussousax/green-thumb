@@ -3,10 +3,12 @@
   --primary-color: #15573F;
   --secondary-color: #FD9872;
   --tertiary-color: #75BC97;
+  --white-color: #ffffff;
 
   --size-sm: 5px;
   --size-md: 10px;
   --size-lg: 15px;
 }
 
-$breakpoint: 600px;
+$default-gap: 20px;
+$breakpoint: 768px;

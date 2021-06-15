@@ -48,6 +48,23 @@ export function createFilterWithTemplate(filters) {
     filterSection.appendChild(container)
 }
 
+const ICONS = {
+    SUN: {
+        no: require('../images/icons/no-sun.svg'),
+        low: require('../images/icons/low-sun.svg'),
+        high: require('../images/icons/high-sun.svg'),
+    },
+    TOXICITY: {
+        true: require('../images/icons/toxic.svg'),
+        false: require('../images/icons/pet.svg')
+    },
+    DROP: {
+        rarely: require('../images/icons/1-drop.svg'),
+        regularly: require('../images/icons/2-drops.svg'),
+        daily: require('../images/icons/3-drops.svg')
+    }
+}
+
 export function createFilterResultsWithTemplate(data) {
 
     const filterResultsPlaceholder = document.querySelector('.filter-results-section')
@@ -55,14 +72,29 @@ export function createFilterResultsWithTemplate(data) {
     const container = document.createElement('section')
     container.classList.add('filter-results-section')
 
+    const div = document.createElement('div')
+    div.classList.add('container')
+
     const ul = document.createElement('ul')
     ul.classList.add('filter-results-list')
-    container.appendChild(ul)
-    const template = document.getElementById('filter-results-template')
+
+    div.appendChild(ul)
+    container.appendChild(div)
+
+    const plantCardTemplate = document.getElementById('plant-card-template')
 
     data.forEach(plant => {
-        const plantCard = document.importNode(template.content, true)
-        plantCard.querySelector('li').textContent = plant.name
+        const plantCard = document.importNode(plantCardTemplate.content, true)
+        plantCard.querySelector('.card-thumbnail img').src = plant.url
+        plantCard.querySelector('.card-thumbnail img').alt = plant.url
+        plantCard.querySelector('.card-title').innerHTML = `<h3>${plant.name}</h3>`
+        plantCard.querySelector('.card-price').innerHTML = `<h4>$${plant.price}</h4>`
+
+        plantCard.querySelector('.card-icons').innerHTML = `
+            <img src=${ICONS.TOXICITY[plant.toxicity]} alt="" />
+            <img src=${ICONS.SUN[plant.sun]} alt=""/>
+            <img src=${ICONS.DROP[plant.water]} alt=""/>
+       `
         ul.appendChild(plantCard)
     })
     filterResultsPlaceholder.replaceWith(container)

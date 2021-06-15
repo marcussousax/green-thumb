@@ -9,7 +9,7 @@ $COMPENSATION: 250px;
   display: flex;
   justify-content: space-between;
   padding-left: 0;
-  list-style-position: inside;
+  list-style: none;
 
   .filter-block {
     display: flex;
@@ -60,16 +60,26 @@ $COMPENSATION: 250px;
   }
 }
 
+
 .filter-results-list {
   color: #A9A9A9;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
 
   .loading-results {
     padding: 80px;
   }
+
+  @media (max-width: $breakpoint) {
+    overflow: auto;
+  }
+  @media (min-width: $breakpoint) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $default-gap;
+  }
 }
+
 
 @media (max-width: $breakpoint) {
   .filter-selects-container {
@@ -78,7 +88,7 @@ $COMPENSATION: 250px;
   .filter-selects-container {
     .filter-block {
       width: 100%;
-      margin: 20px 0;
+      margin: $default-gap 0;
     }
   }
   .filter-results-section {
@@ -90,7 +100,7 @@ $COMPENSATION: 250px;
     padding-top: 0;
 
     .section-title {
-      margin-bottom: 20px;
+      margin-bottom: $default-gap;
     }
   }
 }
