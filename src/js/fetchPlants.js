@@ -1,5 +1,5 @@
 import renderMessage from './renderMessage'
-import { createFilterResultsWithTemplate } from './templates'
+import renderFilterResults from './filterResults'
 
 export default function (filterState) {
     if (Object.values(filterState).some(x => x === '')) {
@@ -26,7 +26,7 @@ export default function (filterState) {
             if (data.status === 404) {
                 renderMessage('No plants found', 'No plant was found with selected criteria.')
             } else {
-                createFilterResultsWithTemplate(data)
+                renderFilterResults(data)
             }
         })
         .catch(error => {

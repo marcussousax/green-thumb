@@ -1,5 +1,5 @@
 import renderMessage from './src/js/renderMessage'
-import { createFilterWithTemplate } from './src/js/templates'
+import renderFilterSelects from './src/js/filterSelects'
 
 const FILTERS = [
     {
@@ -47,7 +47,7 @@ function app() {
     renderMessage('No results yet...', 'Use the filters above to find the plant that best fits your environment :)')
 
     // Creates the group of selects using the HTML template tag
-    createFilterWithTemplate(FILTERS)
+    renderFilterSelects(FILTERS)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
