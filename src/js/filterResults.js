@@ -34,24 +34,30 @@ export default function renderFilterResults(data) {
     const resultsHeader = document.createElement('header')
     resultsHeader.classList.add('filter-results-header')
     resultsHeader.innerHTML = `
-        <img class="filter-results-header-icon" src=${ICONS.HEADER.pick} alt="Illustration of the Sun">
+        <img class="filter-results-header-icon" src=${ICONS.HEADER.pick} />
         <h3 class="filter-results-header-title">Our picks for you</h3>
     `
 
     const ul = document.createElement('ul')
     ul.classList.add('filter-results-list')
 
-    div.appendChild(resultsHeader)
-    div.appendChild(ul)
+    div.append(resultsHeader, ul)
     container.appendChild(div)
 
     const plantCardTemplate = document.getElementById('plant-card-template')
 
+    const favoriteBadge = document.createElement('div' )
+    favoriteBadge.classList.add('favorite-badge')
+    favoriteBadge.textContent = `✨ Staff favorite`
+
     data.forEach(plant => {
         const plantCard = document.importNode(plantCardTemplate.content, true)
+        if (plant.staff_favorite) {
+            plantCard.querySelector('.card-thumbnail').parentElement.prepend(favoriteBadge)
+        }
         plantCard.querySelector('.card-thumbnail img').src = plant.url
         plantCard.querySelector('.card-thumbnail img').alt = plant.url
-        plantCard.querySelector('.card-title').innerHTML = `<h3>${plant.name}</h3>`
+        plantCard.querySelector('.card-title').innerHTML = `<h3 title=${plant.name}>${plant.name}</h3>`
         plantCard.querySelector('.card-price').innerHTML = `<h4>$${plant.price}</h4>`
 
         plantCard.querySelector('.card-icons').innerHTML = `

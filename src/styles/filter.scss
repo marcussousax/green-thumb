@@ -59,7 +59,7 @@ $COMPENSATION: 250px;
 
 .filter-empty {
   color: #A9A9A9;
-  background: transparent url('/src/images/illustrations/no-results.png') no-repeat calc(100% - #{$COMPENSATION}) center;
+  background: transparent url('/src/images/illustrations/no-results.png') no-repeat right center;
   padding: 120px 0;
   @media (max-width: $breakpoint) {
     padding: $default-gap 0;
